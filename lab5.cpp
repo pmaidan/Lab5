@@ -16,9 +16,9 @@
 using namespace std;    // Use standard namespace.
 
 int main()  // Main function, starting point of the program execution.
-{   // Beginning of main function's body.
+{ 
     // Declare the variables for the loan amount, monthly and annual interest rates, amount paid back, and interest paid.
-    double loanAmount, intRateAnnual, intRateMonthly, monthlyPayment, amountPaidBack, interestPaid;
+    double loanAmount, annualRate, monthlyRate, monthlyPayment, amountPaidBack, interestPaid;
 
     const int  MIN = 8000, MAX = 15000; // Declare the minimum and maximum values for the loan.
     int numPayments;    // Declate the variable for the number of payments.
@@ -35,19 +35,19 @@ int main()  // Main function, starting point of the program execution.
 
     // Request the user to enter the annual interest rate.
     cout << "Enter the annual interest rate: ";
-    cin >> intRateAnnual;
+    cin >> annualRate;
 
     // Calculate the monthly interest rate.
-    intRateMonthly = intRateAnnual / 12;
+    monthlyRate = annualRate / 12;
 
     // If the interest rate is entered in the percentage form, convert it to a decimal form.
-    if (intRateMonthly >= 1)    // Check if monthly interest rate was entered in the percentage form.
+    if (monthlyRate >= 1)    // Check if monthly interest rate was entered in the percentage form.
     {
-        intRateMonthly = intRateMonthly / 100;  // Convert the percentage form to a decimal form.
+        monthlyRate = monthlyRate / 100;  // Convert the percentage form to a decimal form.
     }
 
     // Calculate the monthly payment.
-    monthlyPayment = (intRateMonthly * pow((1 + intRateMonthly), numPayments)) * loanAmount / (pow((1 + intRateMonthly), numPayments) - 1);
+    monthlyPayment = (monthlyRate * pow((1 + monthlyRate), numPayments)) * loanAmount / (pow((1 + monthlyRate), numPayments) - 1);
 
     // Calculate the amount paid back.
     amountPaidBack = monthlyPayment * numPayments;
@@ -58,7 +58,7 @@ int main()  // Main function, starting point of the program execution.
     // Display the results.
     cout << fixed << setprecision(2);
     cout << "Loan Amount: " << loanAmount << endl;
-    cout << "Monthly Interest Rate: " << intRateMonthly * 100 << "%" << endl;
+    cout << "Monthly Interest Rate: " << monthlyRate * 100 << "%" << endl;
     cout << "Number of Payments: " << numPayments << endl;
     cout << "Monthly Payment: $" << monthlyPayment << endl;
     cout << "Amount Paid Back: $" << amountPaidBack << endl;

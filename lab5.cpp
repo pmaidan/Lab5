@@ -27,7 +27,7 @@ int main()  // Main function, starting point of the program execution.
     srand(seed);    // Seed the random number generator.
 
     // Assign a random loan amount in the range between MIN_LOAN and MAX_LOAN.
-    fLoanAmount = (rand() % (MAX_LOAN - MIN_LOAN + 1) + MIN_LOAN);  // Use the rand function to generate a random loan amount.
+    fLoanAmount = (double)(rand() % (MAX_LOAN - MIN_LOAN + 1) + MIN_LOAN);  // Use the rand function to generate a random loan amount.
 
     // Request the user to enter the number of payments.
     cout << "Enter the number of payments: ";   // Display the request.
@@ -47,10 +47,10 @@ int main()  // Main function, starting point of the program execution.
     }
 
     // Calculate the monthly payment.
-    fMonthlyPayment = (fMonthlyRate * pow((1.0 + fMonthlyRate), iNumPayments)) * fLoanAmount / (pow((1.0 + fMonthlyRate), iNumPayments) - 1.0);
+    fMonthlyPayment = (fMonthlyRate * pow((1.0 + fMonthlyRate), (double)iNumPayments)) * fLoanAmount / (pow((1.0 + fMonthlyRate), (double)iNumPayments) - 1.0);
 
     // Calculate the amount paid back.
-    fAmountPaidBack = fMonthlyPayment * iNumPayments;
+    fAmountPaidBack = fMonthlyPayment * (double)iNumPayments;
 
     // Calculate the interest paid.
     fInterestPaid = fAmountPaidBack - fLoanAmount;
